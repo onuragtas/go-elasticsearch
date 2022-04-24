@@ -18,7 +18,7 @@ type ElasticSearchV7 struct {
 	Size  int
 }
 
-func NewElasticSearchV7(host, index, doc string, from, size int) go_elasticsearch.IOperation {
+func NewElasticSearch(host, index, doc string, from, size int) go_elasticsearch.IOperation {
 	return &ElasticSearchV7{
 		Host:  host,
 		Index: index,

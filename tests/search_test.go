@@ -8,7 +8,7 @@ import (
 )
 
 func TestSearchV7(t *testing.T) {
-	adapter := v7.NewElasticSearchV7("http://localhost:9200", "epa", "_doc", 0, 100)
+	adapter := v7.NewElasticSearch("http://localhost:9200", "epa", "_doc", 0, 100)
 	operation := go_elasticsearch.NewOperation(adapter)
 
 	mainQuery := go_elasticsearch.Main{}
