@@ -5,11 +5,16 @@ type IOperation interface {
 	Scroll(main Main) (Result, error)
 	ScrollById(result Result) (Result, error)
 	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
+	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 }
 
 type Operation struct {
 	Adapter IOperation
+}
+
+func (o Operation) AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{} {
+	return o.Adapter.AddToExists(to, value)
 }
 
 func (o Operation) AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{} {

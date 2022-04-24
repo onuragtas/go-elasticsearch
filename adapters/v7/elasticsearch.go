@@ -37,6 +37,15 @@ func (t *ElasticSearchV7) AddToTerm(to []map[string]interface{}, key string, val
 	to = append(to, mainTerm)
 	return to
 }
+func (t *ElasticSearchV7) AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{} {
+	mainTerm := map[string]interface{}{}
+	termInterface := map[string]interface{}{}
+
+	termInterface["exists"] = value
+	mainTerm["term"] = termInterface
+	to = append(to, mainTerm)
+	return to
+}
 
 func (t *ElasticSearchV7) AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{} {
 	mainTerm := map[string]interface{}{}
