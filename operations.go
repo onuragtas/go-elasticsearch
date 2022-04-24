@@ -7,10 +7,15 @@ type IOperation interface {
 	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
 	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
+	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
 }
 
 type Operation struct {
 	Adapter IOperation
+}
+
+func (o Operation) UpdateWithId(id string, source map[string]interface{}) ([]byte, error) {
+	return o.Adapter.UpdateWithId(id, source)
 }
 
 func (o Operation) AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{} {

@@ -62,8 +62,8 @@ func (t *ElasticSearchV7) scroll(message []byte) ([]byte, error) {
 	return body, nil
 }
 
-func (t *ElasticSearchV7) request(url string, message []byte) ([]byte, error) {
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(message))
+func (t *ElasticSearchV7) request(method, url string, message []byte) ([]byte, error) {
+	req, err := http.NewRequest(method, url, bytes.NewBuffer(message))
 
 	req.Header.Set("Content-Type", "application/json")
 
@@ -71,14 +71,9 @@ func (t *ElasticSearchV7) request(url string, message []byte) ([]byte, error) {
 	resp, err := client.Do(req)
 	if err != nil {
 		var res []byte
-		return res, errors.New("error")
+		return res, err
 	}
-	defer func(Body io.ReadCloser) {
-		err := Body.Close()
-		if err != nil {
-			log.Println()
-		}
-	}(resp.Body)
+	defer resp.Body.Close()
 
 	body, _ := ioutil.ReadAll(resp.Body)
 

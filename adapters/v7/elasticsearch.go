@@ -120,7 +120,7 @@ func (t *ElasticSearchV7) ScrollById(result go_elasticsearch.Result) (go_elastic
 		scrollRequest["scroll"] = "2m"
 		scrollRequest["scroll_id"] = result.ScrollID
 		scrollJson, _ := json.Marshal(scrollRequest)
-		byteScroll, err := t.request(t.Host+"/_search/scroll", scrollJson)
+		byteScroll, err := t.request("POST", t.Host+"/_search/scroll", scrollJson)
 		if err != nil {
 			panic(err)
 		}
@@ -128,4 +128,10 @@ func (t *ElasticSearchV7) ScrollById(result go_elasticsearch.Result) (go_elastic
 		return adapters.Decorate(byteScroll)
 	}
 	return go_elasticsearch.Result{}, nil
+}
+
+func (t *ElasticSearchV7) UpdateWithId(id string, source map[string]interface{}) ([]byte, error) {
+	scrollJson, _ := json.Marshal(source)
+	byteScroll, err := t.request("PUT", t.Host+"/"+t.Index+"/_doc/"+id, scrollJson)
+	return byteScroll, err
 }
