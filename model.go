@@ -1,9 +1,10 @@
 package go_elasticsearch
 
 type Main struct {
-	Size  int   `json:"size"`
-	From  int   `json:"from"`
-	Query Query `json:"query"`
+	Size   int               `json:"size,omitempty"`
+	From   int               `json:"from,omitempty"`
+	Query  Query             `json:"query"`
+	Script map[string]string `json:"script,omitempty"`
 }
 
 type Query struct {
