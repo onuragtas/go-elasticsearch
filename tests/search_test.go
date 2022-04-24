@@ -1,8 +1,8 @@
 package tests
 
 import (
-	go_elasticsearch "go-elasticsearch"
-	v7 "go-elasticsearch/adapters/v7"
+	"github.com/onuragtas/go_elasticsearch"
+	v7 "github.com/onuragtas/go_elasticsearch/adapters/v7"
 	"log"
 	"testing"
 )

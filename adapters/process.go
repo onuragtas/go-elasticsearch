@@ -2,7 +2,7 @@ package adapters
 
 import (
 	"encoding/json"
-	"go-elasticsearch"
+	"github.com/onuragtas/go_elasticsearch"
 )
 
 func Decorate(res []byte) (go_elasticsearch.Result, error) {

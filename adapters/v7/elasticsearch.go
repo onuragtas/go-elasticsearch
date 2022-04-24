@@ -2,8 +2,8 @@ package v7
 
 import (
 	"encoding/json"
-	"go-elasticsearch"
-	"go-elasticsearch/adapters"
+	"github.com/onuragtas/go_elasticsearch"
+	"github.com/onuragtas/go_elasticsearch/adapters"
 	"log"
 )
 
