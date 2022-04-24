@@ -135,3 +135,9 @@ func (t *ElasticSearchV7) UpdateWithId(id string, source map[string]interface{})
 	byteScroll, err := t.request("PUT", t.Host+"/"+t.Index+"/_doc/"+id, scrollJson)
 	return byteScroll, err
 }
+
+func (t *ElasticSearchV7) UpdateByQuery(query go_elasticsearch.Main) ([]byte, error) {
+	scrollJson, _ := json.Marshal(query)
+	byteScroll, err := t.request("POST", t.Host+"/"+t.Index+"/_update_by_query", scrollJson)
+	return byteScroll, err
+}

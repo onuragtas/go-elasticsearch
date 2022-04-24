@@ -8,10 +8,15 @@ type IOperation interface {
 	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
+	UpdateByQuery(query Main) ([]byte, error)
 }
 
 type Operation struct {
 	Adapter IOperation
+}
+
+func (o Operation) UpdateByQuery(query Main) ([]byte, error) {
+	return o.Adapter.UpdateByQuery(query)
 }
 
 func (o Operation) UpdateWithId(id string, source map[string]interface{}) ([]byte, error) {
