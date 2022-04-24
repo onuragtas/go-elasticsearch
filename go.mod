@@ -1,3 +1,3 @@
-module go-elasticsearch
+module go_elasticsearch
 
 go 1.18
