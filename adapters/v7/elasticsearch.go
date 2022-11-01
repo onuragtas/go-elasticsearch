@@ -41,8 +41,8 @@ func (t *ElasticSearchV7) AddToExists(to []map[string]interface{}, value interfa
 	mainTerm := map[string]interface{}{}
 	termInterface := map[string]interface{}{}
 
-	termInterface["exists"] = value
-	mainTerm["term"] = termInterface
+	termInterface["field"] = value
+	mainTerm["exists"] = termInterface
 	to = append(to, mainTerm)
 	return to
 }
