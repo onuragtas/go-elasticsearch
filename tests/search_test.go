@@ -13,6 +13,12 @@ func TestSearchV7(t *testing.T) {
 
 	mainQuery := go_elasticsearch.Main{}
 	mainQuery.Query.Bool.Must = operation.AddToTerm(mainQuery.Query.Bool.Must, "id", 99516062)
+	sort := make(map[string]interface{})
+	s := make(map[string]string)
+
+	s["order"] = "asc"
+	sort["id"] = s
+	mainQuery.Sort = append(mainQuery.Sort, sort)
 
 	result, err := operation.Search(mainQuery)
 	log.Println(result, err)
