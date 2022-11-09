@@ -33,6 +33,9 @@ func TestBulkV7(t *testing.T) {
 	bulk = append(bulk, go_elasticsearch.D{"index": go_elasticsearch.D{"_index": "epa", "_id": "test"}})
 	bulk = append(bulk, go_elasticsearch.D{"field": "test"})
 
+	bulk = append(bulk, go_elasticsearch.D{"index": go_elasticsearch.D{"_index": "epa", "_id": "test2"}})
+	bulk = append(bulk, go_elasticsearch.D{"field": "test2"})
+
 	bytes, err := operation.Bulk(bulk)
 	if err != nil {
 		return
