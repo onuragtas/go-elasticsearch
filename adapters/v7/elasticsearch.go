@@ -141,7 +141,7 @@ func (t *ElasticSearchV7) UpdateByQuery(query go_elasticsearch.Main) ([]byte, er
 func (t *ElasticSearchV7) Bulk(query interface{}) ([]byte, error) {
 	dst := &bytes.Buffer{}
 
-	if err := t.parseToNDJson(query.(map[int]interface{}), dst); err != nil {
+	if err := t.parseToNDJson(query.([]interface{}), dst); err != nil {
 		return nil, fmt.Errorf("error encoding request: %s", err)
 	}
 
@@ -149,7 +149,7 @@ func (t *ElasticSearchV7) Bulk(query interface{}) ([]byte, error) {
 	return byteScroll, err
 }
 
-func (t *ElasticSearchV7) parseToNDJson(data map[int]interface{}, dst *bytes.Buffer) error {
+func (t *ElasticSearchV7) parseToNDJson(data []interface{}, dst *bytes.Buffer) error {
 	enc := json.NewEncoder(dst)
 	for _, element := range data {
 		if err := enc.Encode(element); err != nil {

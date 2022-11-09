@@ -29,12 +29,9 @@ func TestBulkV7(t *testing.T) {
 	adapter := v7.NewElasticSearch("http://192.168.36.240:9200", "epa", "_doc", 0, 100)
 	operation := go_elasticsearch.NewOperation(adapter)
 
-	bulk := make(map[int]interface{})
-	bulk[0] = go_elasticsearch.D{"index": go_elasticsearch.D{"_index": "epa", "_id": "test"}}
-	bulk[1] = go_elasticsearch.D{"field": "test"}
-
-	bulk[2] = go_elasticsearch.D{"index": go_elasticsearch.D{"_index": "epa", "_id": "test"}}
-	bulk[3] = go_elasticsearch.D{"field": "test"}
+	var bulk []interface{}
+	bulk = append(bulk, go_elasticsearch.D{"index": go_elasticsearch.D{"_index": "epa", "_id": "test"}})
+	bulk = append(bulk, go_elasticsearch.D{"field": "test"})
 
 	bytes, err := operation.Bulk(bulk)
 	if err != nil {
