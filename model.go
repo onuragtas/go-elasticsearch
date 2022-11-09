@@ -1,5 +1,29 @@
 package go_elasticsearch
 
+type IOperation interface {
+	Bulk(main interface{}) ([]byte, error)
+	Search(main Main) (Result, error)
+	Scroll(main Main) (Result, error)
+	ScrollById(result Result) (Result, error)
+	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
+	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
+	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
+	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
+	UpdateByQuery(query Main) ([]byte, error)
+}
+
+type IAdapter interface {
+	Bulk(main interface{}) ([]byte, error)
+	Search(main Main) (Result, error)
+	Scroll(main Main) (Result, error)
+	ScrollById(result Result) (Result, error)
+	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
+	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
+	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
+	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
+	UpdateByQuery(query Main) ([]byte, error)
+}
+
 type Main struct {
 	Size   int                      `json:"size,omitempty"`
 	From   int                      `json:"from,omitempty"`
@@ -7,6 +31,8 @@ type Main struct {
 	Script map[string]string        `json:"script,omitempty"`
 	Sort   []map[string]interface{} `json:"sort,omitempty"`
 }
+
+type D map[string]interface{}
 
 type Query struct {
 	Bool Bool `json:"bool"`

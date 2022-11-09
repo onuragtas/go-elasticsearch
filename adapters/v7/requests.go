@@ -1,4 +1,4 @@
-package v7
+package adapters
 
 import (
 	"bytes"
@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func (t *ElasticSearchV7) search(message []byte) ([]byte, error) {
+func (t *ElasticSearchV7) searchRequest(message []byte) ([]byte, error) {
 	if t.Host == "" {
 		t.Host = os.Getenv("ELASTIC_HOST")
 	}
@@ -36,7 +36,7 @@ func (t *ElasticSearchV7) search(message []byte) ([]byte, error) {
 	return body, nil
 }
 
-func (t *ElasticSearchV7) scroll(message []byte) ([]byte, error) {
+func (t *ElasticSearchV7) scrollRequest(message []byte) ([]byte, error) {
 	if t.Host == "" {
 		t.Host = os.Getenv("ELASTIC_HOST")
 	}
