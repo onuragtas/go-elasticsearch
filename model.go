@@ -27,11 +27,12 @@ type IAdapter interface {
 }
 
 type Main struct {
-	Size   int                      `json:"size,omitempty"`
-	From   int                      `json:"from,omitempty"`
-	Query  Query                    `json:"query"`
-	Script map[string]string        `json:"script,omitempty"`
-	Sort   []map[string]interface{} `json:"sort,omitempty"`
+	Size         int                      `json:"size,omitempty"`
+	From         int                      `json:"from,omitempty"`
+	Query        Query                    `json:"query"`
+	Aggregations map[string]string        `json:"aggs"`
+	Script       map[string]string        `json:"script,omitempty"`
+	Sort         []map[string]interface{} `json:"sort,omitempty"`
 }
 
 type D map[string]interface{}
