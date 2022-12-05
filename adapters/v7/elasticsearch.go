@@ -171,6 +171,11 @@ func (t *ElasticSearchV7) AddToExists(to []map[string]interface{}, value interfa
 	return to
 }
 
+func (t *ElasticSearchV7) AddToObject(to []map[string]interface{}, obj map[string]interface{}) []map[string]interface{} {
+	to = append(to, obj)
+	return to
+}
+
 func (t *ElasticSearchV7) Test() (string, error) {
 	return "test", errors.New("test")
 }
