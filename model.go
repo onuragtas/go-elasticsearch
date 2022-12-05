@@ -89,4 +89,5 @@ type Result struct {
 			Source map[string]interface{} `json:"_source"`
 		} `json:"hits"`
 	} `json:"hits"`
+	Aggregations D `json:"aggregations"`
 }
