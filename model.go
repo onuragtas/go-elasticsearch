@@ -10,6 +10,7 @@ type IOperation interface {
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
 	UpdateByQuery(query Main) ([]byte, error)
+	AddToObject(slice []map[string]interface{}) []map[string]interface{}
 }
 
 type IAdapter interface {
@@ -22,6 +23,7 @@ type IAdapter interface {
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
 	UpdateByQuery(query Main) ([]byte, error)
+	AddToObject(slice []map[string]interface{}) []map[string]interface{}
 }
 
 type Main struct {
