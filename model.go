@@ -42,10 +42,10 @@ type Query struct {
 }
 
 type Bool struct {
-	Must    Must    `json:"must"`
-	MustNot MustNot `json:"must_not"`
-	Should  Should  `json:"should"`
-	Filter  Filter  `json:"filter"`
+	Must    Must                   `json:"must"`
+	MustNot MustNot                `json:"must_not"`
+	Should  Should                 `json:"should"`
+	Filter  map[string]interface{} `json:"filter"`
 }
 
 type Must []map[string]interface{}
@@ -53,8 +53,6 @@ type Must []map[string]interface{}
 type MustNot []map[string]interface{}
 
 type Should []map[string]interface{}
-
-type Filter []map[string]interface{}
 
 type Term struct {
 	Key   string      `json:"key"`
