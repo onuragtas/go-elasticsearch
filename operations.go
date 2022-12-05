@@ -20,6 +20,10 @@ func (o Operation) AddToTerm(to []map[string]interface{}, key string, value inte
 	return o.Adapter.AddToTerm(to, key, value)
 }
 
+func (o Operation) AddToObject(to []map[string]interface{}, obj map[string]interface{}) []map[string]interface{} {
+	return o.Adapter.AddToObject(to, obj)
+}
+
 func (o Operation) AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{} {
 	return o.Adapter.AddToRange(slice, key, from, to)
 }
