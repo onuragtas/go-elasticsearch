@@ -80,7 +80,7 @@ func (t *ElasticSearchV7) Search(query go_elasticsearch.Main) (go_elasticsearch.
 
 }
 
-func (t *ElasticSearchV7) AddToTerms(slice []map[string]interface{}, key string, value ...interface{}) []map[string]interface{} {
+func (t *ElasticSearchV7) AddToTerms(slice []map[string]interface{}, key string, value interface{}) []map[string]interface{} {
 	mainTerm := map[string]interface{}{}
 	termInterface := map[string]interface{}{}
 
