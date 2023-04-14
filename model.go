@@ -32,7 +32,7 @@ type Main struct {
 	Size         int                      `json:"size,omitempty"`
 	From         int                      `json:"from,omitempty"`
 	Query        Query                    `json:"query"`
-	Aggregations map[string]interface{}   `json:"aggs"`
+	Aggregations map[string]interface{}   `json:"aggs,omitempty"`
 	Script       map[string]string        `json:"script,omitempty"`
 	Sort         []map[string]interface{} `json:"sort,omitempty"`
 }
