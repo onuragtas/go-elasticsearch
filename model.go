@@ -6,7 +6,7 @@ type IOperation interface {
 	Scroll(main Main) (Result, error)
 	ScrollById(result Result) (Result, error)
 	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
-	AddToTerms(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
+	AddToTerms(to []map[string]interface{}, key string, value ...interface{}) []map[string]interface{}
 	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
@@ -20,7 +20,7 @@ type IAdapter interface {
 	Scroll(main Main) (Result, error)
 	ScrollById(result Result) (Result, error)
 	AddToTerm(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
-	AddToTerms(to []map[string]interface{}, key string, value interface{}) []map[string]interface{}
+	AddToTerms(to []map[string]interface{}, key string, value ...interface{}) []map[string]interface{}
 	AddToExists(to []map[string]interface{}, value interface{}) []map[string]interface{}
 	AddToRange(slice []map[string]interface{}, key string, from, to interface{}) []map[string]interface{}
 	UpdateWithId(id string, source map[string]interface{}) ([]byte, error)
